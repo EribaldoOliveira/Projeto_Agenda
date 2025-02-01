@@ -1,13 +1,12 @@
 <?php
-    session_start();
+session_start();
 
-    include_once("connection.php");
-    include_once("url.php");
+include_once("connection.php");
+include_once("url.php");
 
-    $query = "SELECT * FROM contacts";
+$contacts = []; // Linha mantida do conflito
 
-    $stmt = $conn->prepare($query);
-
-    $stmt->execute();
-
-    $contacts = $stmt->fetchAll();
+$query = "SELECT * FROM contacts";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$contacts = $stmt->fetchAll();
